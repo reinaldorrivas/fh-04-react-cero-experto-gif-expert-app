@@ -1,4 +1,6 @@
 import { useState } from "react";
+import AddCategory from "./components/AddCategory";
+import GifGrid from "./components/GIfGrid";
 
 const GifExpertApp = () => {
   /*
@@ -6,26 +8,33 @@ const GifExpertApp = () => {
    * debo pensar en implementar algún hook de React.js para efectuar dicha tarea.
    */
 
-  const [categories, setCategories] = useState(["1", "2"]);
+  const [categories, setCategories] = useState([
+    "Dragon Ball",
+    "One Punch Man",
+  ]);
 
-  const generateCategoryKey = (category, index) => {
-    return `${category.split(/\s+/).join("-")}-${index}`;
-  };
+  /*
+   * El prefijo "on" indica al desarrollador que esta función es un manejador de eventos.
+   * Los eventos emiten acciones al componente padre, en este caso, el componente
+   * GifExpertApp, para que este pueda actualizar su estado.
+   */
+  const onSetCategories = (value) => setCategories(value);
+
+  const generateCategoryKey = (category) =>
+    `${category.split(/\s+/).join("-")}`.toLocaleLowerCase();
 
   return (
     <>
-      {/* Titulo */}
       <h1>Gif Expert App!</h1>
 
-      {/* Buscador */}
+      <AddCategory categories={categories} onSetCategories={onSetCategories} />
 
-      {/* Listado Gifs */}
-      <ol>
+      <section>
         {categories.length &&
-          categories.map((category, index) => (
-            <li key={generateCategoryKey(category, index)}>{`${category}`}</li>
+          categories.map((category) => (
+            <GifGrid key={generateCategoryKey(category)} category={category} />
           ))}
-      </ol>
+      </section>
     </>
   );
 };

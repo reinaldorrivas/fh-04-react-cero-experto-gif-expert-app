@@ -2,6 +2,13 @@ import { useState } from "react";
 
 import styles from "./AddCategory.module.css";
 
+const disabledSubmit = (inputValue, categories) =>
+  !inputValue.trim() ||
+  categories.find(
+    (category) =>
+      category.toLocaleLowerCase() === inputValue.toLocaleLowerCase()
+  );
+
 const AddCategory = ({ categories, onSetCategories }) => {
   const [inputValue, setInputValue] = useState("");
 
@@ -9,17 +16,10 @@ const AddCategory = ({ categories, onSetCategories }) => {
     setInputValue(value);
   };
 
-  const disabledSubmit = () =>
-    !inputValue.trim() ||
-    categories.find(
-      (category) =>
-        category.toLocaleLowerCase() === inputValue.toLocaleLowerCase()
-    );
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (disabledSubmit()) {
+    if (disabledSubmit(inputValue, categories)) {
       return;
     }
 
@@ -46,7 +46,9 @@ const AddCategory = ({ categories, onSetCategories }) => {
       />
 
       <input
-        className={`${btn} ${disabledSubmit() ? btnDisabled : btnEnabled}`}
+        className={`${btn} ${
+          disabledSubmit(inputValue, categories) ? btnDisabled : btnEnabled
+        }`}
         type="submit"
         value="Search"
       />

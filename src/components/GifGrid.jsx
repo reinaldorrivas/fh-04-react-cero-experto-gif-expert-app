@@ -1,6 +1,7 @@
-const GifGrid = ({ category }) => {
+import { getGifs } from "./helpers/GetGifs";
 
-  console.log(import.meta.env.VITE_GIPHY_API_KEY)
+const GifGrid = ({ category }) => {
+  console.log(getGifs(category));
 
   return (
     <>

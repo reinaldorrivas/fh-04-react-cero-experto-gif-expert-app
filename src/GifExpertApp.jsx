@@ -8,10 +8,7 @@ const GifExpertApp = () => {
    * debo pensar en implementar algún hook de React.js para efectuar dicha tarea.
    */
 
-  const [categories, setCategories] = useState([
-    "Dragon Ball",
-    "One Punch Man",
-  ]);
+  const [categories, setCategories] = useState(["Dragon Ball"]);
 
   /*
    * El prefijo "on" indica al desarrollador que esta función es un manejador de eventos.

@@ -7,7 +7,6 @@ const GifExpertApp = () => {
    * Siempre que tenga que actualizar el HTML en base a un valor o grupo de valores,
    * debo pensar en implementar algún hook de React.js para efectuar dicha tarea.
    */
-
   const [categories, setCategories] = useState(["Dragon Ball"]);
 
   /*

@@ -9,9 +9,11 @@ const GifGrid = ({ category }) => {
       <h2>{category}</h2>
       <div className="card-grid">
         {loading ? (
-          <p>No se encontraron GIFs para esta categoría.</p>
+          <h4>Cargando...</h4>
+        ) : gifs.length ? (
+          gifs.map((image) => <GifItem key={image.id} {...image} />)
         ) : (
-          gifs?.map((image) => <GifItem key={image.id} {...image} />)
+          <p>No se encontraron GIFs para esta categoría.</p>
         )}
       </div>
       {error && <p>Error al cargar los GIFs 😢</p>}

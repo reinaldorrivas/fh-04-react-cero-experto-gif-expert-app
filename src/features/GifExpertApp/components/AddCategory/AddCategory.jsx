@@ -9,7 +9,7 @@ const disabledSubmit = (inputValue, categories) =>
       category.toLocaleLowerCase() === inputValue.toLocaleLowerCase()
   );
 
-const AddCategory = ({ categories, onSetCategories }) => {
+export const AddCategory = ({ categories, onSetCategories }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = ({ target: { value } }) => {
@@ -56,4 +56,3 @@ const AddCategory = ({ categories, onSetCategories }) => {
   );
 };
 
-export default AddCategory;

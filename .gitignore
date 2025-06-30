@@ -22,3 +22,30 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build outputs
+build/
+coverage/
+out/
+.cache/
+
+# Dependency locks
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.*
+
+# Test snapshots and coverage
+*.snap
+jest-coverage/
+
+# Temp Files
+*.tmp
+*.swp
+*.swo
+
+# Otros
+Thumbs.db

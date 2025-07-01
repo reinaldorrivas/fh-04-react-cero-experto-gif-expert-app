@@ -1,22 +1,33 @@
-import { useState } from "react";
+import { useState, type FC, type FormEvent } from "react";
 
 import styles from "./AddCategory.module.css";
 
-const disabledSubmit = (inputValue, categories) =>
+interface AddCategoryProps {
+  categories: string[];
+  onSetCategories: (value: string[]) => void;
+}
+
+const disabledSubmit = (inputValue: string, categories: string[]) =>
   !inputValue.trim() ||
   categories.find(
     (category) =>
       category.toLocaleLowerCase() === inputValue.toLocaleLowerCase()
   );
 
-export const AddCategory = ({ categories, onSetCategories }) => {
+export const AddCategory: FC<AddCategoryProps> = ({
+  categories,
+  onSetCategories,
+}) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleChange = ({ target: { value } }) => {
+  const handleChange = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(value);
   };
 
-  const handleSubmit = (event) => {
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
     if (disabledSubmit(inputValue, categories)) {
@@ -55,4 +66,3 @@ export const AddCategory = ({ categories, onSetCategories }) => {
     </form>
   );
 };
-

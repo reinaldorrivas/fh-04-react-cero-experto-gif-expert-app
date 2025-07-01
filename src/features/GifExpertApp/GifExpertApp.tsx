@@ -6,16 +6,16 @@ const GifExpertApp = () => {
    * Siempre que tenga que actualizar el HTML en base a un valor o grupo de valores,
    * debo pensar en implementar algún hook de React.js para efectuar dicha tarea.
    */
-  const [categories, setCategories] = useState(["Dragon Ball"]);
+  const [categories, setCategories] = useState<string[]>(["Dragon Ball"]);
 
   /*
    * El prefijo "on" indica al desarrollador que esta función es un manejador de eventos.
    * Los eventos emiten acciones al componente padre, en este caso, el componente
    * GifExpertApp, para que este pueda actualizar su estado.
    */
-  const onSetCategories = (value) => setCategories(value);
+  const onSetCategories = (value: string[]) => setCategories(value);
 
-  const generateCategoryKey = (category) =>
+  const generateCategoryKey = (category: string) =>
     `${category.split(/\s+/).join("-")}`.toLocaleLowerCase();
 
   return (

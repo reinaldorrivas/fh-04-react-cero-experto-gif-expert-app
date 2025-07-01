@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { getGifs } from "../helpers/GetGifs";
+import type { gifDataProps } from "../types/GiphyTypes";
 
-const useFetchGifs = (category) => {
-  const [gifs, setGifs] = useState([]);
+interface UseFetchGifsProps {
+  gifs: gifDataProps[];
+  error: boolean;
+  loading: boolean;
+}
+
+const useFetchGifs = (category: string): UseFetchGifsProps => {
+  const [gifs, setGifs] = useState<gifDataProps[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 

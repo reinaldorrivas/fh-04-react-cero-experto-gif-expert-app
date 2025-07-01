@@ -1,7 +1,12 @@
+import type { FC } from "react";
 import useFetchGifs from "../../../../hooks/useFetchGifs";
 import { GifItem } from "./components";
 
-export const GifGrid = ({ category }) => {
+interface GifGridProps {
+  category: string;
+}
+
+export const GifGrid: FC<GifGridProps> = ({ category }) => {
   const { gifs, error, loading } = useFetchGifs(category);
 
   return (

@@ -1,5 +1,8 @@
-export const getGifs = async (category) => {
-  let gifsData = [];
+import type { gifDataProps, GiphyResponseProps } from "../types/GiphyTypes";
+
+
+export const getGifs = async (category: string): Promise<gifDataProps[]> => {
+  let gifsData: gifDataProps[] = [];
 
   try {
     const url = `https://api.giphy.com/v1/gifs/search?api_key=${
@@ -9,7 +12,7 @@ export const getGifs = async (category) => {
     const response = await fetch(url);
     const { data } = await response.json();
 
-    gifsData = data.map((img) => ({
+    gifsData = data.map((img: GiphyResponseProps) => ({
       id: img.id,
       title: img.title,
       url: img.images.downsized_medium.url,

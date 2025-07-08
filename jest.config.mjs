@@ -7,6 +7,7 @@ const config = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   verbose: true,
+  setupFiles: ["./jest.setup.mjs"],
 };
 
 export default config;

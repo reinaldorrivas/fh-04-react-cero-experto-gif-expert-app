@@ -1,5 +1,5 @@
-import { getGifs } from "../../../../../../src/helpers/GetGifs";
-import { gifDataProps } from "../../../../../../src/types/GiphyTypes";
+import { getGifs } from "../../../src/helpers/GetGifs";
+import { gifDataProps } from "../../../src/types/GiphyTypes";
 
 describe("Testing GetGifs(): ", () => {
   test("Debe retornar un arreglo de gifDataProps: ", async () => {
